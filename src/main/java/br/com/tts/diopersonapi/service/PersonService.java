@@ -1,6 +1,6 @@
 package br.com.tts.diopersonapi.service;
 
-import br.com.tts.diopersonapi.dto.MessageResponseDto;
+import br.com.tts.diopersonapi.dto.MessageResponseDTO;
 import br.com.tts.diopersonapi.dto.request.PersonDTO;
 import br.com.tts.diopersonapi.entity.Person;
 import br.com.tts.diopersonapi.exception.PersonNotFoundException;
@@ -21,7 +21,7 @@ public class PersonService {
 
     private static  final PersonMapper personMapper = PersonMapper.INSTANCE;
 
-    public MessageResponseDto createPerson(PersonDTO personDTO) {
+    public MessageResponseDTO createPerson(PersonDTO personDTO) {
 
         Person personToSave = personMapper.toModel(personDTO);
         Person createPerson = personRepository.save(personToSave);
@@ -45,7 +45,7 @@ public class PersonService {
         personRepository.deleteById(id);
     }
 
-    public MessageResponseDto updateById(Long id, PersonDTO personDTO) throws PersonNotFoundException {
+    public MessageResponseDTO updateById(Long id, PersonDTO personDTO) throws PersonNotFoundException {
 
         verifyIfExists(id);
         Person personToUpdate = personMapper.toModel(personDTO);
@@ -60,8 +60,8 @@ public class PersonService {
                 .orElseThrow(() -> new PersonNotFoundException(id));
     }
 
-    private MessageResponseDto createMessageResponse(String message, Long id) {
-        return MessageResponseDto
+    private MessageResponseDTO createMessageResponse(String message, Long id) {
+        return MessageResponseDTO
                 .builder()
                 .message(message + " " + id)
                 .build();

@@ -1,6 +1,6 @@
 package br.com.tts.diopersonapi.controller;
 
-import br.com.tts.diopersonapi.dto.MessageResponseDto;
+import br.com.tts.diopersonapi.dto.MessageResponseDTO;
 import br.com.tts.diopersonapi.dto.request.PersonDTO;
 import br.com.tts.diopersonapi.exception.PersonNotFoundException;
 import br.com.tts.diopersonapi.service.PersonService;
@@ -29,7 +29,7 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDto createPerson(@RequestBody @Valid PersonDTO personDto) {
+    public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDto) {
         return personService.createPerson(personDto);
     }
 
@@ -46,7 +46,7 @@ public class PersonController {
     }
 
     @PutMapping(path = "{id}")
-    public MessageResponseDto updateById(@PathVariable("id") Long id, @RequestBody  PersonDTO personDTO) throws PersonNotFoundException {
+    public MessageResponseDTO updateById(@PathVariable("id") Long id, @RequestBody  PersonDTO personDTO) throws PersonNotFoundException {
         return personService.updateById(id, personDTO);
     }
 
