@@ -6,6 +6,7 @@ import br.com.tts.diopersonapi.entity.Person;
 import br.com.tts.diopersonapi.exception.PersonNotFoundException;
 import br.com.tts.diopersonapi.mapper.PersonMapper;
 import br.com.tts.diopersonapi.repository.PersonRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +14,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 
     private final PersonRepository personRepository;
 
     private static  final PersonMapper personMapper = PersonMapper.INSTANCE;
-
-    @Autowired
-    public PersonService(PersonRepository personRepository){
-
-        this.personRepository = personRepository;
-    }
 
     public MessageResponseDto createPerson(PersonDTO personDTO) {
 

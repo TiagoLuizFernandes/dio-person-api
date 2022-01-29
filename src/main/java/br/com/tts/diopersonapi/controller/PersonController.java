@@ -4,6 +4,7 @@ import br.com.tts.diopersonapi.dto.MessageResponseDto;
 import br.com.tts.diopersonapi.dto.request.PersonDTO;
 import br.com.tts.diopersonapi.exception.PersonNotFoundException;
 import br.com.tts.diopersonapi.service.PersonService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,17 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
 @RequestMapping(path = "/api/v1/people")
 public class PersonController {
 
     private final PersonService personService;
-
-    @Autowired
-    public PersonController(PersonService personService){
-
-        this.personService = personService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
